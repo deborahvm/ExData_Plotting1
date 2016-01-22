@@ -1,0 +1,6 @@
+unzip("household_power_consumption.zip")
+data <- read.table("household_power_consumption.txt", sep = ";", dec = ".", header = TRUE, stringsAsFactors=FALSE)
+data <- rbind(data[which(data$Date == "1/2/2007"),], data[which(data$Date == "2/2/2007"),])
+png(filename = "plot1.png", width = 480, height = 480)
+hist(as.numeric(data$Global_active_power), xlab = "Global Active Power (kilowatts)", ylab = "Frequency", main = "Global Active Power", col = "red")
+dev.off()
